@@ -65,4 +65,4 @@ jobs:
         RUSTFLAGS="-D warnings" find ./wasm-wrappers/fdw/ -name "Cargo.toml" -exec cargo clippy --all --tests --no-deps --manifest-path {} \;
 
     - name: Perform test
-      run: cd wrappers && cargo pgrx test --features "wasm_fdw pg15"
+      run: cd wrappers && cargo pgrx test --features "wasm_fdw pg15" 
