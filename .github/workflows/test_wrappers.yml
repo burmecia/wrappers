@@ -49,9 +49,11 @@ jobs:
 
     - run: cargo install cargo-pgrx --version 0.12.7
     - run: cargo pgrx init --pg15 /usr/lib/postgresql/15/bin/pg_config
-    - run: cargo install cargo-component --version 0.13.2
+    - run: |
+        curl -L --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/cargo-bins/cargo-binstall/main/install-from-binstall-release.sh | bash
+        cargo binstall cargo-component@0.13.2
     - run: rustup target add wasm32-unknown-unknown
-    - run: which clang && clang --version
+    - run: which clang && clang --version && which cc && cc --version
 
     - name: Build Wasm FDWs
       run: |

@@ -19,11 +19,13 @@ mod tests {
                 r#"CREATE SERVER paddle_server
                      FOREIGN DATA WRAPPER wasm_wrapper
                      OPTIONS (
-                       fdw_package_url 'https://github.com/supabase/wrappers/releases/download/wasm_paddle_fdw_v0.1.1/paddle_fdw.wasm',
+                       --fdw_package_url 'https://github.com/supabase/wrappers/releases/download/wasm_paddle_fdw_v0.1.1/paddle_fdw.wasm',
+                       fdw_package_url 'file://../../../wasm-wrappers/fdw/paddle_fdw/target/wasm32-unknown-unknown/release/paddle_fdw.wasm',
                        fdw_package_name 'supabase:paddle-fdw',
                        fdw_package_version '0.1.1',
                        fdw_package_checksum 'c5ac70bb2eef33693787b7d4efce9a83cde8d4fa40889d2037403a51263ba657',
-                       api_url 'https://sandbox-api.paddle.com',
+                       --api_url 'https://sandbox-api.paddle.com',
+                       api_url 'http://localhost:8096/paddle',
                        api_key '1234567890'
                      )"#,
                 None,
